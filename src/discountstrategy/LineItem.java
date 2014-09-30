@@ -9,6 +9,6 @@ package discountstrategy;
  *
  * @author nok
  */
-public interface CustomerStrategy {
-    public abstract void getCustomer();
+public class LineItem {
+    
 }

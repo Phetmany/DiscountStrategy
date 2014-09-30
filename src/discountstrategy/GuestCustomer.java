@@ -9,6 +9,11 @@ package discountstrategy;
  *
  * @author nok
  */
-public class GuestCustomer {
+public class GuestCustomer extends PayWithCashOrCreditCard implements CustomerStrategy {
+
+    @Override
+    public void getCustomer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
