@@ -13,7 +13,7 @@ public class Product {
     private String productID;
     private String productName;
     private double unitPrice;
-    private DiscountStrategy[] discounts = new DiscountStrategy[0];
+    private DiscountStrategy discounts;
 
     
     //constructor
@@ -22,12 +22,27 @@ public class Product {
         this.productName = productName;
         this.unitPrice = unitPrice;
     }
+    
+     public double getTotalDiscount() {
+        return discounts.getCalculatedDiscount();
+    }
+    
+    
     //setters and getters
-    public String getProductID() {
+    public final String getProductID() {
         return productID;
     }
-
-    public void setProductID(String productID) {
+    
+    /**
+     * 
+     * @param productID - product identifier, is validated for null
+     * and empty String
+     * @throws IllegalArgumentException 
+     */
+    public final void setProductID(final String productID) {
+        if (productID == null || productID.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         this.productID = productID;
     }
 
@@ -47,13 +62,7 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
-    public DiscountStrategy[] getDiscounts() {
-        return discounts;
-    }
 
-    public void setDiscounts(DiscountStrategy[] discounts) {
-        this.discounts = discounts;
-    }
     
     
 }

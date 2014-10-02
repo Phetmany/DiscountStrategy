@@ -9,6 +9,6 @@ package discountstrategy;
  *
  * @author nok
  */
-public class PaymentStrategy {
+public class ReceiptConsoleOutput {
     
 }

@@ -28,6 +28,7 @@ public class FlatRateDiscount implements DiscountStrategy {
         return price;
     }
 
+    //type /** 
     public void setPrice(double price) {
         this.price = price;
     }
@@ -53,7 +54,7 @@ public class FlatRateDiscount implements DiscountStrategy {
     
     @Override
     public double getCalculatedDiscount() {
-        return price * quantity * discountRate;
+        return discountRate;
     }
 
 }

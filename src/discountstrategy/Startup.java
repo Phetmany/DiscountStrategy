@@ -9,6 +9,8 @@ package discountstrategy;
  *
  * @author nok
  */
-public interface CustomerStrategy {
-    public abstract void getCustomer();
+public class Startup {
+    public static void main(String[] args) {
+        
+    }
 }

@@ -10,5 +10,6 @@ package discountstrategy;
  * @author nok
  */
 public class Register {
-    
+    private Receipt receipt = new Receipt();
+
 }

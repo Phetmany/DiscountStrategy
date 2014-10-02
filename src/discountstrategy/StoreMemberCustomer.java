@@ -9,16 +9,16 @@ package discountstrategy;
  *
  * @author nok
  */
-public class StoreMemberCustomer extends PayWithStoreCard implements CustomerStrategy {
+public class StoreMemberCustomer {
     private String firstName;
     private String lastName;
-    private String accountNumber;
+    private String customerID;
 
     //constructor
-    public StoreMemberCustomer(String firstName, String lastName, String accountNumber) {
+    public StoreMemberCustomer(String firstName, String lastName, String customerID) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.accountNumber = accountNumber;
+        this.customerID = customerID;
     }
     
     //getters and setters
@@ -27,6 +27,9 @@ public class StoreMemberCustomer extends PayWithStoreCard implements CustomerStr
     }
 
     public void setFirstName(String firstName) {
+        if (firstName == null || firstName.length() <= 1) {
+            throw new IllegalArgumentException();
+        }
         this.firstName = firstName;
     }
 
@@ -35,20 +38,23 @@ public class StoreMemberCustomer extends PayWithStoreCard implements CustomerStr
     }
 
     public void setLastName(String lastName) {
+        if (lastName == null || lastName.length() <= 1) {
+            throw new IllegalArgumentException();
+        }
         this.lastName = lastName;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getCustomerID() {
+        return customerID;
     }
 
-    public void setAccountNumber(String accountNumber) {    
-        this.accountNumber = accountNumber;
+    public void setCustomerID(String customerID) {
+        if (customerID == null || customerID.length() <= 0) {
+            throw new IllegalArgumentException();
+        }
+        this.customerID = customerID;
     }
 
-    @Override
-    public void getCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
 }
