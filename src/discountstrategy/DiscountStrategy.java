@@ -10,5 +10,5 @@ package discountstrategy;
  * @author nok
  */
 public interface DiscountStrategy {
-    public abstract double getCalculatedDiscount();
+    public abstract double getCalculatedDiscount(double unitPrice, int quantity);
 }

@@ -10,37 +10,13 @@ package discountstrategy;
  * @author nok
  */
 public class FlatRateDiscount implements DiscountStrategy {
-
-    private double price;
-    private int quantity;
     private double discountRate;
 
     //constructor
-    public FlatRateDiscount(double price, int quantity, double discountRate) {
-        this.price = price;
-        this.quantity = quantity;
-        this.discountRate = discountRate;
+    public FlatRateDiscount(double discountRate) {
+        
     }
-    
     //setters and getters
-
-    public double getPrice() {
-        return price;
-    }
-
-    //type /** 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public double getDiscountRate() {
         return discountRate;
     }
@@ -49,11 +25,9 @@ public class FlatRateDiscount implements DiscountStrategy {
         this.discountRate = discountRate;
     }
     
-    
-    
-    
+
     @Override
-    public double getCalculatedDiscount() {
+    public double getCalculatedDiscount(double unitPrice, int quantity) {
         return discountRate;
     }
 

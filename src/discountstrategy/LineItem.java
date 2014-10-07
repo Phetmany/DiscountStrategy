@@ -12,27 +12,33 @@ package discountstrategy;
 public class LineItem {
     private Product product;
     private int quantity;
-    private FakeDatabase database;
+    private DatabaseStrategy database;
 
     
     //constructor
     
-    public LineItem(String productID, int quantity, FakeDatabase database) {
+    public LineItem(String productID, int quantity, DatabaseStrategy database) {
         this.product = database.getProduct(productID);
-        this.quantity = quantity;
+        setQuantity(quantity);
         this.database = database;
     }
-    
-    public LineItem() {
-        
+
+
+    public final Product findProduct(final String productID) {
+        return database.getProduct(productID);
     }
 
-
+    public final double getSubtotal() {
+        return product.getUnitPrice() * quantity;
+    }
+    
+    public final double getDiscount() {
+        return product.getDiscountStrategy().getCalculatedDiscount(product.getUnitPrice(), quantity);
+    }
 
     public Product getProduct() {
         return product;
     }
-
     public void setProduct(Product product) {
         this.product = product;
     }
@@ -41,21 +47,8 @@ public class LineItem {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public final void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-   
-
-    private double getSubtotal() {
-        return (product.getUnitPrice() * quantity);
-    }
-    
-    public double getDiscount() {
-        return product.getTotalDiscount();
-    }
-
-    public double getSubtotalAfterDiscount() {
-        return (product.getUnitPrice() * quantity) - getDiscount();
     }
 }
   

@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package discountstrategy;
 
+package discountstrategy;
+import javax.swing.JOptionPane;
 /**
  *
- * @author nok
+ * @author psent_000
  */
-public class ReceiptConsoleOutput implements ReceiptOutputStrategy {
+public class ReceiptGuiOutput implements ReceiptOutputStrategy {
 
     @Override
     public void printReceipt(String receipt) {
-        System.out.println(receipt);
+        JOptionPane.showMessageDialog(null, receipt);
     }
 
     @Override
     public void printMessage(String message) {
-        System.out.println(message);
+        JOptionPane.showMessageDialog(null, message);
     }
     
 }

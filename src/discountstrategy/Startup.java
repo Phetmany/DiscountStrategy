@@ -11,6 +11,10 @@ package discountstrategy;
  */
 public class Startup {
     public static void main(String[] args) {
+        Register register = new Register();
         
+        register.startNewSale("A0001", new FakeDatabase(), new ReceiptConsoleOutput());
+        register.addItem("P0001", 2);
+        register.endSale();
     }
 }

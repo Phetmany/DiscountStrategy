@@ -9,27 +9,28 @@ package discountstrategy;
  *
  * @author nok
  */
-public class FakeDatabase {
+public class FakeDatabase implements DatabaseStrategy {
     
-    private StoreMemberCustomer[] customers = {
-        new StoreMemberCustomer("Kayla", "Jones", "A0001"),
-        new StoreMemberCustomer("Catherine", "Evans", "A0002"),
-        new StoreMemberCustomer("John", "White", "A0003")
+    private final Customer[] customers = {
+        new Customer("A0001", "Kayla", "Jones"),
+        new Customer("A0002", "Catherine", "Evans"),
+        new Customer("A0003", "John", "White")
     };
     
-    private Product[] products = {
-        new Product("P0001", "Mudd Black Dress", 19.99),
-        new Product("P0002", "Candie's White Sweater", 12.99),
-        new Product("P0003", "Levi's Blue Jeans", 24.99)
+    private final Product[] products = {
+        new Product("P0001", "Mudd Black Dress", 19.99, new QuantityDiscount(3, .30)),
+        new Product("P0002", "Candie's White Sweater", 12.99, new PercentOffDiscount(.20)),
+        new Product("P0003", "Levi's Blue Jeans", 24.99, new NoDiscount())
     };
 
     
     
-    public StoreMemberCustomer getCustomers(String customerID) {
-        StoreMemberCustomer customer = null;
-        for (StoreMemberCustomer sc : customers) {
-            if (sc.getCustomerID().equals(customerID)) {
-                customer = sc;
+    @Override
+    public final Customer getCustomer(final String customerID) {
+        Customer customer = null;
+        for (Customer c : customers) {
+            if (c.getCustomerID().equals(customerID)) {
+                customer = c;
             }
         }
          return customer;
@@ -37,6 +38,7 @@ public class FakeDatabase {
 
 
 
+    @Override
     public Product getProduct(String productId) {
         Product product = null;
         for (Product p : products) {
@@ -46,6 +48,10 @@ public class FakeDatabase {
         }
         return product;
     }
+
+
+
+
 
 
 

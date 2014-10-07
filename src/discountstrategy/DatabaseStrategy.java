@@ -3,17 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package discountstrategy;
 
 /**
  *
- * @author nok
+ * @author psent_000
  */
-public class NoDiscount implements DiscountStrategy {
-
-    @Override
-    public final double getCalculatedDiscount(double unitPrice, int quantity) {
-        return 0;
-    }
-    
+public interface DatabaseStrategy {
+    public abstract Customer getCustomer(final String customerID);
+    public abstract Product getProduct(final String productID);
 }
