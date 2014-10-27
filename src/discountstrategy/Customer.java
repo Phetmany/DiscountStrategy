@@ -13,12 +13,14 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String customerID;
+//    private final String NAME_ERROR = "Field cannot be empty or null";
 
     //constructor
     public Customer(String customerID, String firstName, String lastName) {
         setCustomerID(customerID);
         setFirstName(firstName);
         setLastName(lastName);
+        
     }
     
     //getters and setters
@@ -26,10 +28,9 @@ public class Customer {
         return firstName;
     }
 
-    public final void setFirstName(String firstName) {
+    public final void setFirstName(String firstName) throws InvalidFieldException {
         if (firstName == null || firstName.length() <= 1) {
-            throw new IllegalArgumentException("Name can't be null and "
-                    + "length must be greater than 1");
+            throw new InvalidFieldException();
         }
         this.firstName = firstName;
     }
@@ -38,10 +39,9 @@ public class Customer {
         return lastName;
     }
 
-    public final void setLastName(String lastName) {
+    public final void setLastName(String lastName) throws InvalidFieldException {
         if (lastName == null || lastName.length() <= 1) {
-            throw new IllegalArgumentException("Name can't be null and "
-                    + "length must be greater than 1");
+            throw new InvalidFieldException();
         }
         this.lastName = lastName;
     }
@@ -50,13 +50,12 @@ public class Customer {
         return customerID;
     }
 
-    public final void setCustomerID(String customerID) {
+    public final void setCustomerID(String customerID) throws InvalidFieldException {
         if (customerID == null || customerID.length() <= 0) {
-            throw new IllegalArgumentException("ID cannot be null or 0 length");
+            throw new InvalidFieldException();
         }
         this.customerID = customerID;
     }
 
 
-    
 }

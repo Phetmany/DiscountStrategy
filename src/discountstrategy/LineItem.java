@@ -17,14 +17,14 @@ public class LineItem {
     
     //constructor
     
-    public LineItem(String productID, int quantity, DatabaseStrategy database) {
-        this.product = database.getProduct(productID);
-        setQuantity(quantity);
+    public LineItem(DatabaseStrategy database, String productID, int quantity) {
         this.database = database;
+        this.product = getProduct(productID);  
+        setQuantity(quantity);
     }
 
 
-    public final Product findProduct(final String productID) {
+    public final Product getProduct(final String productID) {
         return database.getProduct(productID);
     }
 

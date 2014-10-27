@@ -11,6 +11,6 @@ package discountstrategy;
  * @author psent_000
  */
 public interface DatabaseStrategy {
-    public abstract Customer getCustomer(final String customerID);
-    public abstract Product getProduct(final String productID);
+    public abstract Customer getCustomer(String customerID);
+    public abstract Product getProduct(String productID);
 }

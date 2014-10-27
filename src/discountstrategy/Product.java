@@ -35,9 +35,9 @@ public class Product {
      * and empty String
      * @throws IllegalArgumentException 
      */
-    public final void setProductID(final String productID) {
+    public final void setProductID(final String productID) throws InvalidFieldException {
         if (productID == null || productID.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new InvalidFieldException();
         }
         this.productID = productID;
     }

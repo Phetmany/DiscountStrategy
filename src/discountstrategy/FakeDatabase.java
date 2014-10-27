@@ -11,7 +11,7 @@ package discountstrategy;
  */
 public class FakeDatabase implements DatabaseStrategy {
     
-    private final Customer[] customers = {
+    private Customer[] customers = {
         new Customer("A0001", "Kayla", "Jones"),
         new Customer("A0002", "Catherine", "Evans"),
         new Customer("A0003", "John", "White")
@@ -27,23 +27,41 @@ public class FakeDatabase implements DatabaseStrategy {
     
     @Override
     public final Customer getCustomer(final String customerID) {
+//        CustomerStrategy customer = null;
+//        for (CustomerStrategy c : customers) {
+//            if (c.getCustomerID().equals(customerID)) {
+//                customer = c;
+//            }
+//        }
+//         return customer;
+        if (customerID == null || customerID.length() == 0) {
+            System.out.println("sorry, customerID cannot be null or zero length");
+            return null;
+        }
+        
         Customer customer = null;
         for (Customer c : customers) {
-            if (c.getCustomerID().equals(customerID)) {
+            if (customerID.equals(c.getCustomerID())) {
                 customer = c;
+                break;
             }
         }
-         return customer;
+        return customer;
     }
 
 
 
     @Override
     public Product getProduct(String productId) {
+        if(productId == null || productId.length() == 0) {
+            System.out.println("Sorry, product id cannot be null or zero length");
+            return null;  // end method prematurely after log to console
+        }
         Product product = null;
         for (Product p : products) {
             if (productId.equals(p.getProductID())) {
                 product = p;
+                break;
             }
         }
         return product;
